@@ -10,17 +10,19 @@
 
 ## 二、跑起来（每块板都一样，XSDB 命令行，不用建工程）
 
-确认装了 Xilinx SDK/Vivado 2019.1（任意一台装了的电脑就行），把本包四个文件放同一目录，逐行敲（等每行跑完再敲下一行）：
+确认装了 Xilinx SDK/Vivado 2019.1（任意一台装了的电脑就行）。把下载的压缩包**解压到 D 盘根目录**，确认路径为 `D:\dualboard_TXRX_pkg\`（四个文件都在里面，不要改名、不要再套文件夹），逐行敲（等每行跑完再敲下一行）：
 
 ```
 xsdb
 connect
-source ps7_init.tcl
+targets
+targets 2
+source D:/dualboard_TXRX_pkg/ps7_init.tcl
 ps7_init
-fpga -file sdr_ai_z7_lvds.bit
+fpga -file D:/dualboard_TXRX_pkg/sdr_ai_z7_lvds.bit
 ps7_post_config
 targets 2
-dow ad9361_noos.elf
+dow D:/dualboard_TXRX_pkg/ad9361_noos.elf
 con
 ```
 
